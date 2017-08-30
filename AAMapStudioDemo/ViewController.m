@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "AAVectorMapView.h"
 @interface ViewController ()
 
 @end
@@ -16,14 +16,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-}
+    
+    AAVectorMapView *mapView = [[AAVectorMapView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    mapView.tapEnabled = YES;
+    mapView.didTapBlock = ^(NSDictionary *tappedElementDic) {
+        NSLog(@"🌺%@",tappedElementDic);
+    };
+    [self.view addSubview:mapView];
+    
+    
+    
+ }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 
 @end

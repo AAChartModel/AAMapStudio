@@ -17,7 +17,9 @@
 #define AABackgroundColor        [UIColor colorWithRed:(rand()%256)/256.0 green:(rand()%256)/256.0 blue:(rand()%256)/256.0 alpha:1]
 #define AADefaultBackgroundColor [UIColor colorWithRed: 0.667 green: 0.835 blue: 1 alpha: 1]
 
-@interface AAVectorMapView ()
+@interface AAVectorMapView (){
+    NSMutableArray * _ripplePointArr;
+}
 @property (nonatomic, strong) NSMutableArray<UIBezierPath *> *bezierCurveArr;  //地图块贝塞尔曲线数组
 @property (nonatomic, strong) NSMutableArray<UIColor      *> *areaColorArr;    //每块地图的颜色数组
 @property (nonatomic, strong) NSMutableArray<NSDictionary *> *provinceNameArr; //各个省级行政区名字及位置数组
@@ -64,6 +66,8 @@
 //                
 //         }
         
+        
+        _ripplePointArr = [[NSMutableArray alloc]init];
 
         
     }
@@ -91,6 +95,8 @@
         
         
     }
+    
+    [self performSelector:@selector(delayConfigureTheRippleView) withObject:nil/*可传任意类型参数*/ afterDelay:2.0];
 }
 
 //绘制地图主视图
@@ -118,73 +124,62 @@
         self.textRect = [rectValue CGRectValue];
         [weakSelf configureTextWithTextContentString:name rect:rectValue];
         
-//        CGFloat randomWidth = arc4random()%110+20;
-//
-//        self.rippleView = [[YSCCircleRippleView alloc] init];
-//        self.rippleView.center = CGPointMake(self.textRect.origin.x, self.textRect.origin.y);
-//        self.rippleView.bounds = CGRectMake(0, 0, randomWidth, randomWidth);
-//        [self addSubview:_rippleView];
-//        
-//        [_rippleView beginAnimation];
-        
-        
-        //雷达型rippleView
-        //        self.rippleView2 = [[YSCRippleView alloc]initWithFrame:CGRectMake(self.textRect.origin.x, self.textRect.origin.y, randomWidth, randomWidth)];
-        //        [self addSubview:self.rippleView2];
-        //        [self.rippleView2 showWithRippleType:YSCRippleTypeRing];
-        
     }];
 }
 
 
 //绘制贝塞尔动态路径
 - (void)configureTheDynamicLineWithStartPoin:(CGPoint)startPoint toEndPoint:(CGPoint)endPoint {
-        UIBezierPath *path = [UIBezierPath bezierPath];
-        [path moveToPoint:startPoint];
-             [path addLineToPoint:endPoint];
-        
-        path.lineWidth = 1.0;
-        path.lineCapStyle = kCGLineCapRound; //线条拐角
-        path.lineJoinStyle = kCGLineJoinRound; //终点处理
-        
-        [path stroke];
+    [self drawLineWithStarPoint:startPoint endPoint:endPoint];
+    [_ripplePointArr addObject:[NSValue valueWithCGPoint:endPoint]];
     
     
-    UILabel *redDotLabel = [[UILabel alloc]init];
-    redDotLabel.backgroundColor = [UIColor redColor];
-    redDotLabel.center = startPoint;
-    redDotLabel.layer.cornerRadius = 10;
-    redDotLabel.layer.masksToBounds = YES;
-    redDotLabel.bounds = CGRectMake(0, 0, 20, 20);
-    [self addSubview:redDotLabel];
+
+    
+//    UILabel *redDotLabel = [[UILabel alloc]init];
+//    redDotLabel.backgroundColor = [UIColor redColor];
+//    redDotLabel.center = startPoint;
+//    redDotLabel.layer.cornerRadius = 10;
+//    redDotLabel.layer.masksToBounds = YES;
+//    redDotLabel.bounds = CGRectMake(0, 0, 20, 20);
+//    [self addSubview:redDotLabel];
   
 
     
     
-    [UIView animateWithDuration:5
-                          delay:0.5
-                        options:0
-                     animations:^{
-                         redDotLabel.center = endPoint;
-                         
-                     } completion:^(BOOL finished) {
-                         [UIView animateWithDuration:5
-                                          animations:^{
-                             redDotLabel.bounds = CGRectMake(0, 0, 0, 0);
-                             redDotLabel.alpha = 0;
-                         } completion:^(BOOL finished) {
-                             
-                             [self configureTheRippleViewWithPointPosition:endPoint];
-
-                             [redDotLabel removeFromSuperview];
-                             
-                         }];
-                         
-                     }];
+//    [UIView animateWithDuration:2
+//                          delay:0.5
+//                        options:0
+//                     animations:^{
+//                         redDotLabel.center = endPoint;
+//                         
+//                     } completion:^(BOOL finished) {
+//                         [UIView animateWithDuration:1
+//                                          animations:^{
+//                             redDotLabel.bounds = CGRectMake(0, 0, 0, 0);
+//                             redDotLabel.alpha = 0;
+//                         } completion:^(BOOL finished) {
+//                             
+//                             [self configureTheRippleViewWithPointPosition:endPoint];
+//
+//                             [redDotLabel removeFromSuperview];
+//                             
+//                         }];
+//                         
+//                     }];
     
 
     
     
+}
+
+- (void)delayConfigureTheRippleView {
+    [_ripplePointArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+      CGPoint p = [obj CGPointValue];
+      [self configureTheRippleViewWithPointPosition:p];
+    }];
+
+
 }
 
 //绘制涟漪视图
@@ -193,7 +188,7 @@
     self.rippleView = [[AAMarkPointRippleView alloc] init];
     self.rippleView.center = CGPointMake(point.x, point.y);
     self.rippleView.bounds = CGRectMake(0, 0, randomWidth, randomWidth);
-    self.rippleView.visionColor = AABackgroundColor;
+    self.rippleView.visionColor = [UIColor redColor];
     [self addSubview:_rippleView];
     
     [_rippleView beginAnimation];
@@ -266,7 +261,7 @@
             self.areaColorArr[_selectedIdx]  = AADefaultBackgroundColor;
             _selectedIdx = i;
             self.areaColorArr[_selectedIdx]  = AABackgroundColor;
-            [self setNeedsDisplay];
+            [self setNeedsDisplay];//这一句代码比较关键
             
             [self respondingToTapEventsWithToBeSendDictionary:[NSMutableDictionary dictionaryWithDictionary:@{@"哈哈哈哈":@"很好成功地进行了传值"}]];
             
@@ -295,20 +290,10 @@
 //        [self configureTheDynamicLineWithStartPoin:point toEndPoint:CGPointMake(rect.origin.x, rect.origin.y)];
 //    }
 //    
-    for (int i=0; i<10; i++) {
-        UIBezierPath *path = [UIBezierPath bezierPath];
-        [path moveToPoint:CGPointMake(10, 70)];
-            [path addLineToPoint:CGPointMake(200, 80*i+50)];
-        
-        
-        path.lineWidth = 5.0;
-        path.lineCapStyle = kCGLineCapRound; //线条拐角
-        path.lineJoinStyle = kCGLineJoinRound; //终点处理
-        
-        [path stroke];
-    }
-
-    
+//    for (int i=0; i<10; i++) {
+//        
+//        [self drawLineWithStarPoint:CGPointMake(10, 70) endPoint:CGPointMake(200, 80*i+50)];
+//    }
     
     self.toolTipView.alpha = 0.6;
     self.toolTipView.titleText = self.provinceNameArr[arc4random()%34][@"name"];
@@ -345,6 +330,29 @@
     }
 }
 
+//以动画的形式画线
+- (void)drawLineWithStarPoint:(CGPoint)startPoint endPoint:(CGPoint)endPoint {
+    // 创建path
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path moveToPoint:startPoint];
+    [path addLineToPoint:endPoint];
+    
+    CAShapeLayer *trackLayer = [CAShapeLayer new];
+    trackLayer.path = path.CGPath;
+    trackLayer.frame = self.bounds;
+    trackLayer.lineWidth = 1;
+    trackLayer.fillColor = nil;
+    trackLayer.strokeColor = [UIColor blackColor].CGColor;
+    
+    [self.layer addSublayer:trackLayer];
+    
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:NSStringFromSelector(@selector(strokeEnd))];
+    animation.fromValue = @0.0;
+    animation.toValue = @1.0;
+    animation.duration = 2;
+    
+    [trackLayer addAnimation:animation forKey:NSStringFromSelector(@selector(strokeEnd))];
+}
 
 
 //-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

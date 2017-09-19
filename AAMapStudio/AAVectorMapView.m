@@ -248,9 +248,7 @@
 
 - (void)didTapWithTheSelectedPointPosition:(CGPoint )point{
     
-
     [self configureTheTooltipViewWithPoinPosition:point];
- 
     
     //遍历34个地图块.判断点击的是那一块
     for (int i = 0; i <34; i++) {

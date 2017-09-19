@@ -39,8 +39,6 @@ AAMapStudio
 
 
 
-
-
 系统要求
 ==============
 This library requires `iOS 7.0+` and `Xcode 8.0+`.
@@ -51,5 +49,22 @@ This library requires `iOS 7.0+` and `Xcode 8.0+`.
 `AAMapStudio.h` 使用 MIT 许可证，详情可见 LICENSE 文件内容.
 
 
+贡献者们
+==============
+
+* [An An](https://github.com/AAChartModel/AAMapStudio) 原作者.
+
+贡献
+==============
+
+1. Fork it (https://github.com/AAChartModel/AAMapStudio)
+2. 创建你的 `feature` 分支 (`git checkout -b my-new-feature`)
+3. 提交你修改的内容 (`git commit -am 'Add some feature'`)
+4. 推送已修改的内容至你的分支(`branch`)中 (`git push origin my-new-feature`)
+5. 创建一个合并请求(`Pull Request`) 
+
+Copyright
+==============
+An An 
 
 

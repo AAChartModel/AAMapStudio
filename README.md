@@ -1,7 +1,9 @@
-# AAMapStudio
 
 AAMapStudio
 ==============
+
+### 中文文档
+https://github.com/AAChartModel/AAMapStudio/blob/master/CHINESE-README.md
 
 
 
@@ -24,7 +26,7 @@ Installation
 
 ### CocoaPods
 
-1. Add `pod 'AAMapStudio'` to your Podfile.
+1. Add `pod 'AAMapStudio'` to your **Podfile**.
 2. Run `pod install` or `pod update`.
 3. Import \<AAMapStudio/AAMapStudio.h\>.
 

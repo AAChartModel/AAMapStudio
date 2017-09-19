@@ -24,7 +24,7 @@ AAMapStudio
 
 ### CocoaPods
 
-1. 在*Podfile*文件中添加 `pod 'AAMapStudio'`.
+1. 在**Podfile**文件中添加 `pod 'AAMapStudio'`.
 2. 执行 `pod install` 或者 `pod update`.
 3. 导入 `<AAMapStudio/AAMapStudio.h>`.
 

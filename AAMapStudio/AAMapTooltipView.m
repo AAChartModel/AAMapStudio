@@ -26,15 +26,14 @@
         _titleLabel = [[UILabel alloc]init];
         _titleLabel.textColor = [UIColor whiteColor];
         _titleLabel.font = [UIFont systemFontOfSize:15.f];
-        // 禁止将 AutoresizingMask 转换为 Constraints
-        _titleLabel.translatesAutoresizingMaskIntoConstraints = NO;//这句话看起来似乎挺重要的(没有还不行)
+        _titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:_titleLabel];
         
-        [self addConstraints:@[[NSLayoutConstraint constraintWithItem:_titleLabel//被约束对象
-                                                            attribute:NSLayoutAttributeLeft//被约束的值
-                                                            relatedBy:NSLayoutRelationEqual//约束类型
-                                                               toItem:self//约束依赖的对象
-                                                            attribute:NSLayoutAttributeLeft//约束的值
+        [self addConstraints:@[[NSLayoutConstraint constraintWithItem:_titleLabel
+                                                            attribute:NSLayoutAttributeLeft
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:self
+                                                            attribute:NSLayoutAttributeLeft
                                                            multiplier:1.0
                                                              constant:10],
                                [NSLayoutConstraint constraintWithItem:_titleLabel

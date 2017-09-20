@@ -24,11 +24,6 @@
     };
     [self.view addSubview:mapView];
     
-    
-    
  }
-
-
-
 
 @end

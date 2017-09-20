@@ -18,6 +18,7 @@
 		27AA76BF1F53FB71002E84C5 /* AAMarkPointRippleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AA76B91F53FB71002E84C5 /* AAMarkPointRippleView.m */; };
 		27AA76C01F53FB71002E84C5 /* AAProvinceName.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27AA76BA1F53FB71002E84C5 /* AAProvinceName.plist */; };
 		27AA76C11F53FB71002E84C5 /* AAVectorMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AA76BC1F53FB71002E84C5 /* AAVectorMapView.m */; };
+		27C3015D1F72431400C1E460 /* AARippleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C3015C1F72431400C1E460 /* AARippleView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		27AA76BA1F53FB71002E84C5 /* AAProvinceName.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = AAProvinceName.plist; sourceTree = "<group>"; };
 		27AA76BB1F53FB71002E84C5 /* AAVectorMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAVectorMapView.h; sourceTree = "<group>"; };
 		27AA76BC1F53FB71002E84C5 /* AAVectorMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAVectorMapView.m; sourceTree = "<group>"; };
+		27C3015B1F72431400C1E460 /* AARippleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AARippleView.h; sourceTree = "<group>"; };
+		27C3015C1F72431400C1E460 /* AARippleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AARippleView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +103,8 @@
 				27AA76BC1F53FB71002E84C5 /* AAVectorMapView.m */,
 				27AA76B61F53FB71002E84C5 /* AAMapTooltipView.h */,
 				27AA76B71F53FB71002E84C5 /* AAMapTooltipView.m */,
+				27C3015B1F72431400C1E460 /* AARippleView.h */,
+				27C3015C1F72431400C1E460 /* AARippleView.m */,
 				27AA76B81F53FB71002E84C5 /* AAMarkPointRippleView.h */,
 				27AA76B91F53FB71002E84C5 /* AAMarkPointRippleView.m */,
 				27AA76B51F53FB71002E84C5 /* AAChinaMapPaths.plist */,
@@ -183,6 +188,7 @@
 			files = (
 				278368B91F53F94100E838A8 /* ViewController.m in Sources */,
 				278368B61F53F94100E838A8 /* AppDelegate.m in Sources */,
+				27C3015D1F72431400C1E460 /* AARippleView.m in Sources */,
 				27AA76C11F53FB71002E84C5 /* AAVectorMapView.m in Sources */,
 				278368B31F53F94100E838A8 /* main.m in Sources */,
 				27AA76BF1F53FB71002E84C5 /* AAMarkPointRippleView.m in Sources */,

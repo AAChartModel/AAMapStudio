@@ -11,6 +11,9 @@
 #import "AAMapTooltipView.h"
 //#import "WorldContinentMap.h"
 #import "AAMarkPointRippleView.h"
+
+#import "AARippleView.h"
+
  /**
  *  固定宽高560*500
  */
@@ -26,11 +29,7 @@
 
 @property (nonatomic, strong) AAMarkPointRippleView *rippleView;
 @property (nonatomic, assign) CGRect  textRect;
-
-//@property (nonatomic, strong) YSCRippleView *rippleView2;
-
 @property (nonatomic, strong) UITapGestureRecognizer *tapRecognizer;
-
 @property (nonatomic, strong) AAMapTooltipView *toolTipView;
 
 //@property (nonatomic, strong) WorldContinentMap *worldMap;
@@ -40,7 +39,7 @@
 @implementation AAVectorMapView
 
 #pragma mark - init
-- (instancetype)initWithFrame:(CGRect)frame{
+- (instancetype)initWithFrame:(CGRect)frame {
     
     if (self = [super initWithFrame:CGRectMake(0, 0, 560, 480)]) {
         self.backgroundColor = [UIColor whiteColor];
@@ -77,7 +76,7 @@
 
 
 #pragma mark - render infographic
-- (void)drawRect:(CGRect)rect{
+- (void)drawRect:(CGRect)rect {
     //画地图
     [self drawTheMapView];
     
@@ -185,13 +184,21 @@
 //绘制涟漪视图
 - (void)configureTheRippleViewWithPointPosition:(CGPoint )point {
     CGFloat randomWidth = arc4random()%110+20;
-    self.rippleView = [[AAMarkPointRippleView alloc] init];
-    self.rippleView.center = CGPointMake(point.x, point.y);
-    self.rippleView.bounds = CGRectMake(0, 0, randomWidth, randomWidth);
-    self.rippleView.visionColor = [UIColor redColor];
-    [self addSubview:_rippleView];
+//    self.rippleView = [[AAMarkPointRippleView alloc] init];
+//    self.rippleView.center = CGPointMake(point.x, point.y);
+//    self.rippleView.bounds = CGRectMake(0, 0, randomWidth, randomWidth);
+//    self.rippleView.visionColor = [UIColor redColor];
+//    [self addSubview:_rippleView];
+//    
+//    [_rippleView beginAnimation];
     
-    [_rippleView beginAnimation];
+    
+    AARippleView *rippleV = [[AARippleView alloc]init];
+    rippleV.effectType = 2;
+    rippleV.center = CGPointMake(point.x, point.y);
+    rippleV.bounds = CGRectMake(0, 0, randomWidth, randomWidth);
+    [self addSubview:rippleV];
+    [rippleV startAnimation];
 }
 
 //绘制文字
@@ -203,9 +210,9 @@
     NSMutableParagraphStyle *textStyle = NSMutableParagraphStyle.defaultParagraphStyle.mutableCopy;
     textStyle.alignment = NSTextAlignmentLeft;
     
-    NSDictionary *textFontAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize: 13],
+    NSDictionary *textFontAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize: 13],
                                          NSForegroundColorAttributeName:UIColor.blackColor,
-                                         NSParagraphStyleAttributeName: textStyle
+                                         NSParagraphStyleAttributeName:textStyle
                                          };
     
     CGFloat textTextHeight = [textContent boundingRectWithSize:CGSizeMake(textRect.size.width, INFINITY)
@@ -241,7 +248,7 @@
 }
 
 #pragma mark -- event action
-- (void)click:(UITapGestureRecognizer *)sender{
+- (void)click:(UITapGestureRecognizer *)sender {
     CGPoint point = [sender locationInView:sender.view];
     [self didTapWithTheSelectedPointPosition:point];
 }
@@ -359,7 +366,7 @@
 //}
 
 #pragma mark -- lazy load
-- (NSMutableArray<UIBezierPath *> *)bezierCurveArr{
+- (NSMutableArray<UIBezierPath *> *)bezierCurveArr {
     if (_bezierCurveArr == nil) {
         NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"AAChinaMapPaths" ofType:@"plist"];
         NSData *pathsData = [NSData dataWithContentsOfFile:sourcePath];
@@ -369,25 +376,25 @@
     return _bezierCurveArr;
 }
 
-- (NSMutableArray *)areaColorArr{
+- (NSMutableArray *)areaColorArr {
     if (_areaColorArr == nil) {
         _areaColorArr = [NSMutableArray arrayWithCapacity:34];
         for (int i = 0; i < 34; i++) {
-            UIColor* fillColor = AADefaultBackgroundColor;
+            UIColor *fillColor = AADefaultBackgroundColor;
             [_areaColorArr addObject:fillColor];
         }
     }
     return _areaColorArr;
 }
 
-- (NSMutableArray *)provinceNameArr{
+- (NSMutableArray *)provinceNameArr {
     if (_provinceNameArr != nil) {
         return _provinceNameArr;
     }
     return [self readFromDisk];
 }
 
-- (NSMutableArray *)readFromDisk{
+- (NSMutableArray *)readFromDisk {
     NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"AAProvinceName" ofType:@"plist"];
     NSData *data = [NSData dataWithContentsOfFile:sourcePath];
     NSMutableArray *nameArr = [NSKeyedUnarchiver unarchiveObjectWithData:data];

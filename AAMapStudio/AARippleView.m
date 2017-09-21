@@ -140,30 +140,34 @@
 }
 
 - (void)startAnimation {
-    CGRect fromRect = CGRectMake(CGRectGetMidX(self.bounds)-self.minRadius,
-                                 CGRectGetMidY(self.bounds)-self.minRadius,
-                                 self.minRadius*2,
-                                 self.minRadius*2);
-    CGRect toRect = CGRectMake(CGRectGetMidX(self.bounds)-self.maxRadius,
-                               CGRectGetMidY(self.bounds)-self.maxRadius,
-                               self.maxRadius*2,
-                               self.maxRadius*2);
-    
-    CABasicAnimation *zoomAnimation = [CABasicAnimation animationWithKeyPath:@"path"];
-    zoomAnimation.duration = self.duration;
-    zoomAnimation.fromValue = (__bridge id)[UIBezierPath bezierPathWithOvalInRect:fromRect].CGPath;
-    zoomAnimation.toValue = (__bridge id)[UIBezierPath bezierPathWithOvalInRect:toRect].CGPath;
-    zoomAnimation.repeatCount = HUGE_VAL;
-    zoomAnimation.timingFunction = self.timingFunction;
-    [self.circleLayer addAnimation:zoomAnimation forKey:@"zoom"];
-    
-    CABasicAnimation *fadeAnimation = [CABasicAnimation animationWithKeyPath:@"strokeColor"];
-    fadeAnimation.duration = self.duration;
-    fadeAnimation.fromValue = (__bridge id)[UIColor whiteColor].CGColor;
-    fadeAnimation.toValue = (__bridge id)[UIColor clearColor].CGColor;
-    fadeAnimation.repeatCount = HUGE_VAL;
-    fadeAnimation.timingFunction = self.timingFunction;
-    [self.circleLayer addAnimation:fadeAnimation forKey:@"fade"];
+    if (self.effectType == 1) {
+        [self launchRippleEffect];
+    } else {
+        CGRect fromRect = CGRectMake(CGRectGetMidX(self.bounds)-self.minRadius,
+                                     CGRectGetMidY(self.bounds)-self.minRadius,
+                                     self.minRadius*2,
+                                     self.minRadius*2);
+        CGRect toRect = CGRectMake(CGRectGetMidX(self.bounds)-self.maxRadius,
+                                   CGRectGetMidY(self.bounds)-self.maxRadius,
+                                   self.maxRadius*2,
+                                   self.maxRadius*2);
+        
+        CABasicAnimation *zoomAnimation = [CABasicAnimation animationWithKeyPath:@"path"];
+        zoomAnimation.duration = self.duration;
+        zoomAnimation.fromValue = (__bridge id)[UIBezierPath bezierPathWithOvalInRect:fromRect].CGPath;
+        zoomAnimation.toValue = (__bridge id)[UIBezierPath bezierPathWithOvalInRect:toRect].CGPath;
+        zoomAnimation.repeatCount = HUGE_VAL;
+        zoomAnimation.timingFunction = self.timingFunction;
+        [self.circleLayer addAnimation:zoomAnimation forKey:@"zoom"];
+        
+        CABasicAnimation *fadeAnimation = [CABasicAnimation animationWithKeyPath:@"strokeColor"];
+        fadeAnimation.duration = self.duration;
+        fadeAnimation.fromValue = (__bridge id)[UIColor whiteColor].CGColor;
+        fadeAnimation.toValue = (__bridge id)[UIColor clearColor].CGColor;
+        fadeAnimation.repeatCount = HUGE_VAL;
+        fadeAnimation.timingFunction = self.timingFunction;
+        [self.circleLayer addAnimation:fadeAnimation forKey:@"fade"];
+    }
 }
 
 - (void)stopAnimation {
@@ -200,14 +204,14 @@
             self.count = 4;
             self.lineWidth = 2.0f;
             
-            UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-            btn.backgroundColor = [UIColor blueColor];
-            [btn setBackgroundImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
-            [btn setTitle:@"Tap" forState:UIControlStateNormal];
-            btn.frame = CGRectMake(0, 0, 100, 100);
-            btn.center = self.center;
-            [btn addTarget:self action:@selector(launchRippleEffect) forControlEvents:UIControlEventTouchUpInside];
-            [self addSubview:btn];
+//            UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//            btn.backgroundColor = [UIColor blueColor];
+//            [btn setBackgroundImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
+//            [btn setTitle:@"Tap" forState:UIControlStateNormal];
+//            btn.frame = CGRectMake(0, 0, 100, 100);
+//            btn.center = self.center;
+//            [btn addTarget:self action:@selector(launchRippleEffect) forControlEvents:UIControlEventTouchUpInside];
+//            [self addSubview:btn];
             
             break;
         }

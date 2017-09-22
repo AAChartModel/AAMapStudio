@@ -13,6 +13,7 @@
 		278368BC1F53F94100E838A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 278368BA1F53F94100E838A8 /* Main.storyboard */; };
 		278368BE1F53F94100E838A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 278368BD1F53F94100E838A8 /* Assets.xcassets */; };
 		278368C11F53F94100E838A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 278368BF1F53F94100E838A8 /* LaunchScreen.storyboard */; };
+		2788A31C1F749C61004D5E11 /* VectorMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2788A31B1F749C61004D5E11 /* VectorMapVC.m */; };
 		27AA76BD1F53FB71002E84C5 /* AAChinaMapPaths.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27AA76B51F53FB71002E84C5 /* AAChinaMapPaths.plist */; };
 		27AA76BE1F53FB71002E84C5 /* AAMapTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AA76B71F53FB71002E84C5 /* AAMapTooltipView.m */; };
 		27AA76BF1F53FB71002E84C5 /* AAMarkPointRippleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AA76B91F53FB71002E84C5 /* AAMarkPointRippleView.m */; };
@@ -32,6 +33,8 @@
 		278368BD1F53F94100E838A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		278368C01F53F94100E838A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		278368C21F53F94100E838A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2788A31A1F749C61004D5E11 /* VectorMapVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VectorMapVC.h; sourceTree = "<group>"; };
+		2788A31B1F749C61004D5E11 /* VectorMapVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VectorMapVC.m; sourceTree = "<group>"; };
 		27AA76B51F53FB71002E84C5 /* AAChinaMapPaths.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = AAChinaMapPaths.plist; sourceTree = "<group>"; };
 		27AA76B61F53FB71002E84C5 /* AAMapTooltipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAMapTooltipView.h; sourceTree = "<group>"; };
 		27AA76B71F53FB71002E84C5 /* AAMapTooltipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAMapTooltipView.m; sourceTree = "<group>"; };
@@ -77,9 +80,11 @@
 			children = (
 				278368B41F53F94100E838A8 /* AppDelegate.h */,
 				278368B51F53F94100E838A8 /* AppDelegate.m */,
+				278368BA1F53F94100E838A8 /* Main.storyboard */,
 				278368B71F53F94100E838A8 /* ViewController.h */,
 				278368B81F53F94100E838A8 /* ViewController.m */,
-				278368BA1F53F94100E838A8 /* Main.storyboard */,
+				2788A31A1F749C61004D5E11 /* VectorMapVC.h */,
+				2788A31B1F749C61004D5E11 /* VectorMapVC.m */,
 				278368BD1F53F94100E838A8 /* Assets.xcassets */,
 				278368BF1F53F94100E838A8 /* LaunchScreen.storyboard */,
 				278368C21F53F94100E838A8 /* Info.plist */,
@@ -188,6 +193,7 @@
 			files = (
 				278368B91F53F94100E838A8 /* ViewController.m in Sources */,
 				278368B61F53F94100E838A8 /* AppDelegate.m in Sources */,
+				2788A31C1F749C61004D5E11 /* VectorMapVC.m in Sources */,
 				27C3015D1F72431400C1E460 /* AARippleView.m in Sources */,
 				27AA76C11F53FB71002E84C5 /* AAVectorMapView.m in Sources */,
 				278368B31F53F94100E838A8 /* main.m in Sources */,

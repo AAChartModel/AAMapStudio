@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
-#import "AAVectorMapView.h"
-@interface ViewController ()
+#import "VectorMapVC.h"
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource>{
+    UITableView *_tableView;
+}
+@property (nonatomic, strong) NSArray *cellTitleArr;
 
 @end
 
@@ -17,13 +20,97 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    AAVectorMapView *mapView = [[AAVectorMapView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    mapView.tapEnabled = YES;
-    mapView.didTapBlock = ^(NSDictionary *tappedElementDic) {
-        NSLog(@"🌺%@",tappedElementDic);
-    };
-    [self.view addSubview:mapView];
+    _tableView = [[UITableView alloc]init];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [self.view addSubview:_tableView];
+    
+    _tableView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addConstraints:[self configureTheConstraintArrayWithItem:_tableView toItem:self.view]];
+    
+
     
  }
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 4;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    customTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (!cell) {
+        cell = [[customTableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
+    }
+    cell.label.text = self.cellTitleArr[indexPath.section][indexPath.row];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    VectorMapVC *vc = [[VectorMapVC alloc]init];
+    vc.effectType = indexPath.row;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (NSArray *)configureTheConstraintArrayWithItem:(UIView *)view1 toItem:(UIView *)view2{
+    return  @[[NSLayoutConstraint constraintWithItem:view1
+                                           attribute:NSLayoutAttributeLeft
+                                           relatedBy:NSLayoutRelationEqual
+                                              toItem:view2
+                                           attribute:NSLayoutAttributeLeft
+                                          multiplier:1.0
+                                            constant:0],
+              [NSLayoutConstraint constraintWithItem:view1
+                                           attribute:NSLayoutAttributeRight
+                                           relatedBy:NSLayoutRelationEqual
+                                              toItem:view2
+                                           attribute:NSLayoutAttributeRight
+                                          multiplier:1.0
+                                            constant:0],
+              [NSLayoutConstraint constraintWithItem:view1
+                                           attribute:NSLayoutAttributeTop
+                                           relatedBy:NSLayoutRelationEqual
+                                              toItem:view2
+                                           attribute:NSLayoutAttributeTop
+                                          multiplier:1.0
+                                            constant:0],
+              [NSLayoutConstraint constraintWithItem:view1
+                                           attribute:NSLayoutAttributeBottom
+                                           relatedBy:NSLayoutRelationEqual
+                                              toItem:view2
+                                           attribute:NSLayoutAttributeBottom
+                                          multiplier:1.0
+                                            constant:0],
+              
+              ];
+}
+
+- (NSArray *)cellTitleArr {
+    if (!_cellTitleArr) {
+        _cellTitleArr = @[
+                          @[@"one",@"two",@"three",@"four"]];
+    }
+    return _cellTitleArr;
+}
+
+@end
+
+@implementation customTableViewCell
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        _label = [[UILabel alloc]init];
+        _label.frame = CGRectMake(60, 0, self.frame.size.width, 55);
+        _label.textAlignment = NSTextAlignmentLeft;
+        _label.font = [UIFont systemFontOfSize:14.f];
+        _label.textColor = [UIColor darkGrayColor];
+        [self addSubview:_label];
+    }
+    return self;
+}
 
 @end

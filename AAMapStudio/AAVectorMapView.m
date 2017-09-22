@@ -12,7 +12,7 @@
 //#import "WorldContinentMap.h"
 #import "AAMarkPointRippleView.h"
 
-#import "AARippleView.h"
+
 
  /**
  *  固定宽高560*500
@@ -194,7 +194,7 @@
     
     
     AARippleView *rippleV = [[AARippleView alloc]init];
-    rippleV.effectType = 2;
+    rippleV.effectType = self.effectType;
     rippleV.center = CGPointMake(point.x, point.y);
     rippleV.bounds = CGRectMake(0, 0, randomWidth, randomWidth);
     [self addSubview:rippleV];

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "AARippleView.h"
 
 typedef NS_ENUM(NSInteger,AAMapRippleEffect) {
     AAMapRippleEffectRing = 0,       //环形涟漪效果
@@ -31,6 +31,8 @@ typedef void (^AAMapViewDidTapBlock)(NSDictionary *tappedElementDic);
 @property (nonatomic, assign) BOOL tapEnabled;       //用户是否可点击
 @property (nonatomic, assign) NSUInteger selectedIdx;//选中的地图块
 @property (nonatomic, assign) BOOL tooltipEnabled;//是否启用浮动提示框
+@property (nonatomic, assign) AARippleEffect effectType;//涟漪效果样式
+
 @property (nonatomic, weak  ) id<AAMapViewDidTapDelegate> didTapDelegate;//代理传值
 @property (nonatomic, copy  ) AAMapViewDidTapBlock didTapBlock;//block 传值
 

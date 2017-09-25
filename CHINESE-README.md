@@ -77,8 +77,13 @@ This library requires `iOS 7.0+` and `Xcode 8.0+`.
 4. 推送已修改的内容至你的分支(`branch`)中 (`git push origin my-new-feature`)
 5. 创建一个合并请求(`Pull Request`) 
 
-Copyright
+版权所有
 ==============
-An An 
+An An
+
+
+源代码地址
+==============
+**https://github.com/AAChartModel/AAMapStudio**
 
 

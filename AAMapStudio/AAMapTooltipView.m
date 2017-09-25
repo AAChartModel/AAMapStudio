@@ -1,9 +1,10 @@
 //
 //  AAMapTooltipView.m
-//  Testing
+//  AAMapStudioDemo
 //
 //  Created by An An on 2017/8/24.
-//  Copyright © 2017年 apple. All rights reserved.
+//  Copyright © 2017年 An An. All rights reserved.
+//  source code ----*** https://github.com/AAChartModel/AAMapStudio ***--- source code
 //
 
 #import "AAMapTooltipView.h"

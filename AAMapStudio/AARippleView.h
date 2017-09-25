@@ -2,8 +2,9 @@
 //  AARipple.h
 //  AARipple
 //
-//  Created by An An on 12/29/15.
+//  Created by An An on 2017/8/24.
 //  Copyright © 2017年 An An. All rights reserved.
+//  source code ----*** https://github.com/AAChartModel/AAMapStudio ***--- source code
 //
 
 #import <UIKit/UIKit.h>

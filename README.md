@@ -68,6 +68,10 @@ Contributing
 
 Copyright
 ==============
-An An 
+An An
+
+Source code
+==============
+**https://github.com/AAChartModel/AAMapStudio**
 
 

@@ -1,9 +1,10 @@
 //
-//  ChinaMapWithName.m
-//  TestWebView
+//  AAVectorMapView.m
+//  AAMapStudioDemo
 //
-//  Created by apple on 17/1/5.
-//  Copyright © 2017年 apple. All rights reserved.
+//  Created by An An on 2017/8/24.
+//  Copyright © 2017年 An An. All rights reserved.
+//  source code ----*** https://github.com/AAChartModel/AAMapStudio ***--- source code
 //
 
 #import "AAVectorMapView.h"

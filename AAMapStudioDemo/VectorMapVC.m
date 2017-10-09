@@ -19,6 +19,8 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     AAVectorMapView *mapView = [[AAVectorMapView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    NSArray *seriesDataArr = @[@"湖北",@"黑龙江",@"辽宁",@"浙江",@"江西"];
+    mapView.seriesDataArr = seriesDataArr;
     mapView.effectType = self.effectType;
     mapView.tapEnabled = YES;
     mapView.didTapBlock = ^(NSDictionary *tappedElementDic) {

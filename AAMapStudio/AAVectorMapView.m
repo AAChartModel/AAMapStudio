@@ -23,6 +23,7 @@
 
 @interface AAVectorMapView (){
     NSMutableArray * _ripplePointArr;
+   
 }
 @property (nonatomic, strong) NSMutableArray<UIBezierPath *> *bezierCurveArr;  //地图块贝塞尔曲线数组
 @property (nonatomic, strong) NSMutableArray<UIColor      *> *areaColorArr;    //每块地图的颜色数组
@@ -32,6 +33,7 @@
 @property (nonatomic, assign) CGRect  textRect;
 @property (nonatomic, strong) UITapGestureRecognizer *tapRecognizer;
 @property (nonatomic, strong) AAMapTooltipView *toolTipView;
+@property (nonatomic, strong) NSMutableDictionary *provinceNameAndRectDic;//省名称和坐标对应的点
 
 //@property (nonatomic, strong) WorldContinentMap *worldMap;
 
@@ -44,6 +46,8 @@
     
     if (self = [super initWithFrame:CGRectMake(0, 0, 560, 480)]) {
         self.backgroundColor = [UIColor whiteColor];
+        self.textFont = 11.0f;
+        self.textColor = [UIColor darkGrayColor];
         
              //        [UIView animateWithDuration:1. animations:^{
         CGFloat scale = frame.size.width/560.;
@@ -86,15 +90,28 @@
    
     UIColor *color = [UIColor blueColor];
     [color set];
-
-    for (int i=0; i<10; i++) {
-        
-        NSValue *rectValue=  self.provinceNameArr[arc4random()%34][@"rect"];
-        CGRect rect =  [rectValue CGRectValue];
+    
+    
+    
+//    NSArray *provinceNameArr = @[@"安徽",@"新疆",@"江苏"];
+    
+    [self.seriesDataArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSValue *rectValue = self.provinceNameAndRectDic[obj];
+        CGRect rect = [rectValue CGRectValue];
         [self configureTheDynamicLineWithStartPoin:CGPointMake(10, 70) toEndPoint:CGPointMake(rect.origin.x, rect.origin.y)];
         
-        
-    }
+    }];
+    
+ 
+
+//    for (int i=0; i<10; i++) {
+//
+//        NSValue *rectValue=  self.provinceNameArr[arc4random()%34][@"rect"];
+//        CGRect rect =  [rectValue CGRectValue];
+//        [self configureTheDynamicLineWithStartPoin:CGPointMake(10, 70) toEndPoint:CGPointMake(rect.origin.x, rect.origin.y)];
+//
+//
+//    }
     
     [self performSelector:@selector(delayConfigureTheRippleView) withObject:nil/*可传任意类型参数*/ afterDelay:2.0];
 }
@@ -211,8 +228,8 @@
     NSMutableParagraphStyle *textStyle = NSMutableParagraphStyle.defaultParagraphStyle.mutableCopy;
     textStyle.alignment = NSTextAlignmentLeft;
     
-    NSDictionary *textFontAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize: 13],
-                                         NSForegroundColorAttributeName:UIColor.blackColor,
+    NSDictionary *textFontAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:self.textFont],
+                                         NSForegroundColorAttributeName:self.textColor,
                                          NSParagraphStyleAttributeName:textStyle
                                          };
     
@@ -409,6 +426,18 @@
         [self addSubview:_toolTipView];
     }
     return _toolTipView;
+}
+
+- (NSMutableDictionary *)provinceNameAndRectDic {
+    if (!_provinceNameAndRectDic) {
+        _provinceNameAndRectDic = [[NSMutableDictionary alloc]init];
+        [self.provinceNameArr enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSString *provinceName = obj[@"name"];
+            NSValue *provinceRect = obj[@"rect"];
+            [_provinceNameAndRectDic setValue:provinceRect forKey:provinceName];
+        }];
+    }
+    return _provinceNameAndRectDic;
 }
 
 @end

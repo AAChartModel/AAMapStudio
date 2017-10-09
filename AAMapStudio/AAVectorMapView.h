@@ -28,7 +28,9 @@ typedef void (^AAMapViewDidTapBlock)(NSDictionary *tappedElementDic);
 @end
 
 @interface AAVectorMapView : UIView
-
+@property (nonatomic, strong) NSArray *seriesDataArr;
+@property (nonatomic, strong) UIColor *textColor;
+@property (nonatomic, assign) CGFloat textFont;
 @property (nonatomic, assign) BOOL tapEnabled;       //用户是否可点击
 @property (nonatomic, assign) NSUInteger selectedIdx;//选中的地图块
 @property (nonatomic, assign) BOOL tooltipEnabled;//是否启用浮动提示框

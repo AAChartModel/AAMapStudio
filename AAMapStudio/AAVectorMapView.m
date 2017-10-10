@@ -19,7 +19,7 @@
  *  固定宽高560*500
  */
 #define AABackgroundColor        [UIColor colorWithRed:(rand()%256)/256.0 green:(rand()%256)/256.0 blue:(rand()%256)/256.0 alpha:1]
-#define AADefaultBackgroundColor [UIColor colorWithRed: 0.667 green: 0.835 blue: 1 alpha: 1]
+#define AADefaultBackgroundColor [UIColor colorWithRed: 0.777 green: 0.666 blue: 1 alpha: 1]
 
 @interface AAVectorMapView (){
     NSMutableArray * _ripplePointArr;
@@ -48,6 +48,7 @@
         self.backgroundColor = [UIColor whiteColor];
         self.textFont = 11.0f;
         self.textColor = [UIColor darkGrayColor];
+        self.defaultBackgroundColor = [UIColor colorWithRed:(rand()%256)/256.0 green:(rand()%256)/256.0 blue:(rand()%256)/256.0 alpha:1];
         
              //        [UIView animateWithDuration:1. animations:^{
         CGFloat scale = frame.size.width/560.;
@@ -91,16 +92,35 @@
     UIColor *color = [UIColor blueColor];
     [color set];
     
+    if (self.dataType == AAMapDataTypeWithoutLine) {
+        [self.seriesDataArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSValue *rectValue = self.provinceNameAndRectDic[obj[@"name"]];
+            CGRect rect = [rectValue CGRectValue];
+            //        [self configureTheDynamicLineWithStartPoin:CGPointMake(10, 70) toEndPoint:CGPointMake(rect.origin.x, rect.origin.y)];
+//            [self configureTheDynamicLineWithStartPoin:startPoint toEndPoint:CGPointMake(rect.origin.x, rect.origin.y)];
+            [self configureTheRippleViewWithPointPosition:CGPointMake(rect.origin.x, rect.origin.y)];
+            
+        }];
+      
+    } else if(self.dataType == AAMapDataTypeWithLineExpand) {
+        [self.seriesDataArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            //    NSArray *provinceNameArr = @[@"安徽",@"新疆",@"江苏"];
+            NSValue *startPointRectValue = self.provinceNameAndRectDic[obj[0][@"name"]];
+            CGRect startPointRect = [startPointRectValue CGRectValue];
+            CGPoint startPoint = CGPointMake(startPointRect.origin.x, startPointRect.origin.y);
+            
+            NSValue *rectValue = self.provinceNameAndRectDic[obj[1][@"name"]];
+            CGRect rect = [rectValue CGRectValue];
+            //        [self configureTheDynamicLineWithStartPoin:CGPointMake(10, 70) toEndPoint:CGPointMake(rect.origin.x, rect.origin.y)];
+            [self configureTheDynamicLineWithStartPoin:startPoint toEndPoint:CGPointMake(rect.origin.x, rect.origin.y)];
+            
+            
+        }];
+    }
     
     
-//    NSArray *provinceNameArr = @[@"安徽",@"新疆",@"江苏"];
     
-    [self.seriesDataArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSValue *rectValue = self.provinceNameAndRectDic[obj];
-        CGRect rect = [rectValue CGRectValue];
-        [self configureTheDynamicLineWithStartPoin:CGPointMake(10, 70) toEndPoint:CGPointMake(rect.origin.x, rect.origin.y)];
-        
-    }];
+
     
  
 
@@ -119,7 +139,7 @@
 //绘制地图主视图
 - (void)drawTheMapView {
     
-    UIColor* strokeColor = [UIColor colorWithRed: 0.976 green: 0.988 blue: 0.996 alpha: 1];
+    UIColor *strokeColor = [UIColor colorWithRed: 0.976 green: 0.988 blue: 0.996 alpha: 1];
     
     [self.bezierCurveArr enumerateObjectsUsingBlock:^(UIBezierPath * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         obj.miterLimit = 4;
@@ -135,12 +155,16 @@
 - (void)drawTheTextAndRippleView {
     // 绘制文字
     __weak typeof(self) weakSelf = self;
-    [self.provinceNameArr enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSString *name = obj[@"name"];
-        NSValue *rectValue = obj[@"rect"];
-        self.textRect = [rectValue CGRectValue];
-        [weakSelf configureTextWithTextContentString:name rect:rectValue];
-        
+//    [self.provinceNameArr enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        NSString *name = obj[@"name"];
+//        NSValue *rectValue = obj[@"rect"];
+//        self.textRect = [rectValue CGRectValue];
+//        [weakSelf configureTextWithTextContentString:name rect:rectValue];
+//
+//    }];
+    
+    [self.provinceNameAndRectDic enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSValue *obj, BOOL * _Nonnull stop) {
+        [weakSelf configureTextWithTextContentString:key rect:obj];
     }];
 }
 
@@ -281,7 +305,7 @@
         BOOL isInPath = [path containsPoint:point];
         if (isInPath) {
             //清除之前选中的颜色，fill当前选中的颜色
-            self.areaColorArr[_selectedIdx]  = AADefaultBackgroundColor;
+            self.areaColorArr[_selectedIdx]  = self.defaultBackgroundColor;
             _selectedIdx = i;
             self.areaColorArr[_selectedIdx]  = AABackgroundColor;
             [self setNeedsDisplay];//这一句代码比较关键
@@ -398,7 +422,7 @@
     if (_areaColorArr == nil) {
         _areaColorArr = [NSMutableArray arrayWithCapacity:34];
         for (int i = 0; i < 34; i++) {
-            UIColor *fillColor = AADefaultBackgroundColor;
+            UIColor *fillColor = self.defaultBackgroundColor;
             [_areaColorArr addObject:fillColor];
         }
     }

@@ -17,6 +17,12 @@ typedef NS_ENUM(NSInteger,AAMapRippleEffect) {
     AAMapRippleEffectDynamicBubble,  //动态气泡
 };
 
+typedef NS_ENUM(NSInteger,AAMapDataType) {
+    AAMapDataTypeWithoutLine = 0,  //没有连接线效果
+    AAMapDataTypeWithLineExpand,   //有起始点和结束点连线效果(向外扩张)
+    AAMapDataTypeWithLineShrink,   //有起始点结束点连线效果(向内收缩)
+};
+
 
 typedef void (^AAMapViewDidTapBlock)(NSDictionary *tappedElementDic);
 
@@ -28,9 +34,11 @@ typedef void (^AAMapViewDidTapBlock)(NSDictionary *tappedElementDic);
 @end
 
 @interface AAVectorMapView : UIView
+@property (nonatomic, assign  ) AAMapDataType dataType;
 @property (nonatomic, strong) NSArray *seriesDataArr;
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic, assign) CGFloat textFont;
+@property (nonatomic, strong) UIColor *defaultBackgroundColor;
 @property (nonatomic, assign) BOOL tapEnabled;       //用户是否可点击
 @property (nonatomic, assign) NSUInteger selectedIdx;//选中的地图块
 @property (nonatomic, assign) BOOL tooltipEnabled;//是否启用浮动提示框

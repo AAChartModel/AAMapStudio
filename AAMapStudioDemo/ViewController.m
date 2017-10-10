@@ -38,7 +38,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -92,7 +92,8 @@
 - (NSArray *)cellTitleArr {
     if (!_cellTitleArr) {
         _cellTitleArr = @[
-                          @[@"one",@"two",@"three",@"four"]];
+                          @[@"rippleEffectOne",@"rippleEffectTwo",@"rippleEffectThree",@"rippleEffectFour",
+                            @"dataTypeOne",@"dataTypeTwo"]];
     }
     return _cellTitleArr;
 }

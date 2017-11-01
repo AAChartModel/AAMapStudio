@@ -3,10 +3,21 @@
 AAMapStudio
 ==============
 
+[![Support](https://img.shields.io/badge/support-iOS%206%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/)
+[![](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/AAChartModel/AAMapStudio/blob/master/LICENSE)
+[![](https://img.shields.io/badge/language-OC-green.svg)](https://github.com/AAChartModel/AAMapStudio)
+[![](https://img.shields.io/badge/support-Animation-yellow.svg)](https://github.com/AAChartModel/AAMapStudio-Swift)
+[![](https://img.shields.io/badge/support-Swift-orange.svg)](https://github.com/AAChartModel/AAMapStudio-Swift)
+[![](https://jaywcjlove.github.io/sb/lang/chinese.svg)](https://github.com/AAChartModel/AAMapStudio/blob/master/CHINESE-README.md)
+[![](https://jaywcjlove.github.io/sb/lang/english.svg)](https://github.com/AAChartModel/AAMapStudio)
+[![](https://img.shields.io/badge/Live-ChartsShow-red.svg)](http://htmlpreview.github.io/?https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/AAChartKitDocumentLive.html)
+
+### [English Document](https://github.com/AAChartModel/AAMapStudio/blob/master/README.md)|[中文文档](https://github.com/AAChartModel/AAMapStudio/blob/master/CHINESE-README.md)
 
 
 图形演示
 ==============
+
 1. 基础中国地图
 ![屏幕快照 2017-09-20 上午10.30.12.png](http://upload-images.jianshu.io/upload_images/2412088-88aea29ee640992e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
@@ -84,6 +95,6 @@ An An
 
 源代码地址
 ==============
-**https://github.com/AAChartModel/AAMapStudio**
+***https://github.com/AAChartModel/AAMapStudio***
 
 

@@ -390,7 +390,6 @@
     trackLayer.lineWidth = 1;
     trackLayer.fillColor = nil;
     trackLayer.strokeColor = [UIColor blackColor].CGColor;
-    
     [self.layer addSublayer:trackLayer];
     
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:NSStringFromSelector(@selector(strokeEnd))];

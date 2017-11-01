@@ -224,6 +224,13 @@
             self.count = 4;
             self.lineWidth = 2.0f;
             
+            UIView *dotView = [[UIView alloc]init];
+            dotView.backgroundColor = [UIColor blueColor];
+            dotView.frame = CGRectMake(0, 0, 100, 100);
+            dotView.layer.cornerRadius = 50;
+            dotView.clipsToBounds = YES;
+            [self addSubview:dotView];
+            
 //            UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
 //            btn.backgroundColor = [UIColor blueColor];
 //            [btn setBackgroundImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];

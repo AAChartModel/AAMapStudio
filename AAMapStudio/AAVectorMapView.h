@@ -53,7 +53,7 @@ typedef void (^AAMapViewDidTapBlock)(NSDictionary *tappedElementDic);
 @end
 
 @interface AAVectorMapView : UIView
-@property (nonatomic, assign  ) AAMapDataType dataType;
+@property (nonatomic, assign) AAMapDataType dataType;
 @property (nonatomic, strong) NSArray *seriesDataArr;
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic, assign) CGFloat textFont;

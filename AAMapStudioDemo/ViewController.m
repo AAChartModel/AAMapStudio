@@ -77,7 +77,7 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (NSArray *)configureTheConstraintArrayWithItem:(UIView *)view1 toItem:(UIView *)view2{
+- (NSArray *)configureTheConstraintArrayWithItem:(UIView *)view1 toItem:(UIView *)view2 {
     return  @[[NSLayoutConstraint constraintWithItem:view1
                                            attribute:NSLayoutAttributeLeft
                                            relatedBy:NSLayoutRelationEqual

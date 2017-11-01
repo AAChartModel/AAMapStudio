@@ -12,7 +12,7 @@ AAMapStudio
 [![](https://jaywcjlove.github.io/sb/lang/english.svg)](https://github.com/AAChartModel/AAMapStudio)
 [![](https://img.shields.io/badge/Live-ChartsShow-red.svg)](http://htmlpreview.github.io/?https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/AAChartKitDocumentLive.html)
 
-#### [English Document](https://github.com/AAChartModel/AAMapStudio/blob/master/README.md)|[中文文档](https://github.com/AAChartModel/AAMapStudio/blob/master/CHINESE-README.md)
+#### [English Document](https://github.com/AAChartModel/AAMapStudio/blob/master/README.md) | [中文文档](https://github.com/AAChartModel/AAMapStudio/blob/master/CHINESE-README.md)
 
 
 图形演示
@@ -91,6 +91,12 @@ This library requires `iOS 7.0+` and `Xcode 8.0+`.
 版权所有
 ==============
 An An
+
+待办清单
+==============
+
+感谢
+==============
 
 
 源代码地址

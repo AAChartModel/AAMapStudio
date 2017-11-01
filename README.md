@@ -11,7 +11,7 @@ AAMapStudio
 [![](https://jaywcjlove.github.io/sb/lang/english.svg)](https://github.com/AAChartModel/AAMapStudio)
 [![](https://img.shields.io/badge/Live-ChartsShow-red.svg)](http://htmlpreview.github.io/?https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/AAChartKitDocumentLive.html)
 
-#### [English Document](https://github.com/AAChartModel/AAMapStudio/blob/master/README.md)|[中文文档](https://github.com/AAChartModel/AAMapStudio/blob/master/CHINESE-README.md)
+#### [English Document](https://github.com/AAChartModel/AAMapStudio/blob/master/README.md) | [中文文档](https://github.com/AAChartModel/AAMapStudio/blob/master/CHINESE-README.md)
 
 
 
@@ -34,7 +34,7 @@ Performance
 1. Zombie outbreak map
 ![屏幕快照 2017-09-20 上午11.04.23.png](http://upload-images.jianshu.io/upload_images/2412088-df5ea6702431d9f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-1.The World intelligence distribution map
+1. The World intelligence distribution map
 ![屏幕快照 2017-09-20 上午11.03.55.png](http://upload-images.jianshu.io/upload_images/2412088-242e856f61c1982f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
@@ -112,6 +112,13 @@ Contributing
 Copyright
 ==============
 An An
+
+To-do list
+==============
+
+
+Thanks
+==============
 
 Source code
 ==============

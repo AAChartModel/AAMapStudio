@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2751B1281FAC19100019908F /* AAMapLegendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2751B1271FAC19100019908F /* AAMapLegendView.m */; };
 		278368B31F53F94100E838A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 278368B21F53F94100E838A8 /* main.m */; };
 		278368B61F53F94100E838A8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 278368B51F53F94100E838A8 /* AppDelegate.m */; };
 		278368B91F53F94100E838A8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278368B81F53F94100E838A8 /* ViewController.m */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2751B1261FAC19100019908F /* AAMapLegendView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AAMapLegendView.h; sourceTree = "<group>"; };
+		2751B1271FAC19100019908F /* AAMapLegendView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AAMapLegendView.m; sourceTree = "<group>"; };
 		278368AE1F53F94100E838A8 /* AAMapStudioDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AAMapStudioDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		278368B21F53F94100E838A8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		278368B41F53F94100E838A8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -106,6 +109,8 @@
 			children = (
 				27AA76BB1F53FB71002E84C5 /* AAVectorMapView.h */,
 				27AA76BC1F53FB71002E84C5 /* AAVectorMapView.m */,
+				2751B1261FAC19100019908F /* AAMapLegendView.h */,
+				2751B1271FAC19100019908F /* AAMapLegendView.m */,
 				27AA76B61F53FB71002E84C5 /* AAMapTooltipView.h */,
 				27AA76B71F53FB71002E84C5 /* AAMapTooltipView.m */,
 				27C3015B1F72431400C1E460 /* AARippleView.h */,
@@ -149,6 +154,7 @@
 				TargetAttributes = {
 					278368AD1F53F94100E838A8 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = BPAYP34L8N;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -197,6 +203,7 @@
 				27C3015D1F72431400C1E460 /* AARippleView.m in Sources */,
 				27AA76C11F53FB71002E84C5 /* AAVectorMapView.m in Sources */,
 				278368B31F53F94100E838A8 /* main.m in Sources */,
+				2751B1281FAC19100019908F /* AAMapLegendView.m in Sources */,
 				27AA76BF1F53FB71002E84C5 /* AAMarkPointRippleView.m in Sources */,
 				27AA76BE1F53FB71002E84C5 /* AAMapTooltipView.m in Sources */,
 			);
@@ -320,6 +327,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = BPAYP34L8N;
 				INFOPLIST_FILE = AAMapStudioDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAMapStudioDemo;
@@ -331,6 +339,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = BPAYP34L8N;
 				INFOPLIST_FILE = AAMapStudioDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAMapStudioDemo;

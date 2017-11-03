@@ -2,14 +2,15 @@
 AAMapStudio
 ==============
 
+[![](https://jaywcjlove.github.io/sb/lang/english.svg)](https://github.com/AAChartModel/AAMapStudio)
+[![](https://jaywcjlove.github.io/sb/lang/chinese.svg)](https://github.com/AAChartModel/AAMapStudio/blob/master/CHINESE-README.md)
 [![Support](https://img.shields.io/badge/support-iOS%206%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/)
 [![](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/AAChartModel/AAMapStudio/blob/master/LICENSE)
 [![](https://img.shields.io/badge/language-OC-green.svg)](https://github.com/AAChartModel/AAMapStudio)
 [![](https://img.shields.io/badge/support-Animation-yellow.svg)](https://github.com/AAChartModel/AAMapStudio-Swift)
 [![](https://img.shields.io/badge/support-Swift-orange.svg)](https://github.com/AAChartModel/AAMapStudio-Swift)
-[![](https://jaywcjlove.github.io/sb/lang/chinese.svg)](https://github.com/AAChartModel/AAMapStudio/blob/master/CHINESE-README.md)
-[![](https://jaywcjlove.github.io/sb/lang/english.svg)](https://github.com/AAChartModel/AAMapStudio)
-[![](https://img.shields.io/badge/Live-ChartsShow-red.svg)](http://htmlpreview.github.io/?https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/AAChartKitDocumentLive.html)
+
+
 
 #### [English Document](https://github.com/AAChartModel/AAMapStudio/blob/master/README.md) | [中文文档](https://github.com/AAChartModel/AAMapStudio/blob/master/CHINESE-README.md)
 

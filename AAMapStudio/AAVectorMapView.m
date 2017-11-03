@@ -180,6 +180,7 @@
 //        self.textRect = [rectValue CGRectValue];
 //        [weakSelf configureTextWithTextContentString:name rect:rectValue];
 //
+    
 //    }];
     
     [self.provinceNameAndRectDic enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSValue *obj, BOOL * _Nonnull stop) {
